@@ -7,31 +7,30 @@ const multer = require("multer"); //image storage system
 const path = require("path"); // express to backend directory in our express app
 const cors = require("cors");
 // const { default: all_product } = require("../frontend/src/Components/Assets/all_product");
-// const dotenv = require("dotenv");
-// dotenv.config();
+const dotenv = require("dotenv");
+dotenv.config();
 
 app.use(express.json()); //  what will be the response for json automatically passed through json
 app.use(cors()); // exprees js code connect to 4000 port
 
 // Password : lrcC9JTT6Z9Gggcm
 
-mongoose.connect("mongodb+srv://ds290828:lrcC9JTT6Z9Gggcm@cluster0.f2tmszp.mongodb.net/e-commerce");
+// mongoose.connect(process.env.dburl);
 // Database connection with mongodb
-// mongoose.connect(process.env.DatabaseURL , {
-//     useNewUrlParser:true,
-// })
-// .then(() => console.log("Database connected successfully"))
-// .catch((err)=> console.log("Error in connecting to mongodb",err));
+// console.log("Divynahsu"+process.env.dburl);
+mongoose.connect(process.env.dburl)
+.then(() => console.log("Database connected successfully"))
+.catch((err)=> console.log("Error in connecting to mongodb",err));
 
 // Get the default connection
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:')); // Event handlers for connection events
-db.once('open', function () {
-    console.log('Connected to MongoDB Atlas HEHEHE');
-});
-db.on('disconnected', function () {
-    console.log('Disconnected from MongoDB Atlas');
-});
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection error:')); // Event handlers for connection events
+// db.once('open', function () {
+//     console.log('Connected to MongoDB Atlas HEHEHE');
+// });
+// db.on('disconnected', function () {
+//     console.log('Disconnected from MongoDB Atlas');
+// });
 
 // if (db.readyState === 1) {   // Check the connection status
 //   console.log('Connected to MongoDB Atlas');
